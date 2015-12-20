@@ -1,0 +1,8 @@
+@import "mixin/clearfix";
+
+.index {
+    @include clearfix();
+    width: 150px;
+    height: 150px;
+    background: url(img/test.jpg?__sprite);
+}
