@@ -1,10 +1,14 @@
 // 设置项目属性
 fis.set('project', {
     name: 'fis3-base',
+    url: 'http://yanhaijing.com/',
     static: '/static',
     //设置编译范围为 html 文件，不过 html 文件中使用到的资源也会参与编译。
-    files: ['*.html', 'map.json', '/modules/**', '/test/**'] 
+    files: ['**.html', 'map.json', '/modules/**', '/test/**'] 
 });
+
+// fis.set('domain', '${project.url}${project.name}'); // 线上
+fis.set('domain', ''); // 本地
 
 // 引入模块化开发插件，设置规范为 commonJs 规范。
 fis.hook('commonjs');
@@ -76,4 +80,29 @@ fis.match('::package', {
 
 
 // fis3 release prod 产品发布，进行合并
-fis.media('prod');
+fis.media('prod')
+    .match('**.{js,es}', {
+        optimizer: fis.plugin('uglify-js'),
+        useHash: true,
+        domain: '${domain}'
+    })
+    .match('**.{css,scss}', {
+        optimizer: fis.plugin('clean-css', {
+            'keepBreaks': true //保持一个规则一个换行
+        }),
+        useSprite: true,
+        useHash: true,
+        domain: '${domain}'
+    })
+    .match('image', {
+        useHash: true,
+        domain: '${domain}'
+    })
+    // 启用打包插件，必须匹配 ::package
+    .match('::package', {
+        // packager: fis.plugin('map'),
+        spriter: fis.plugin('csssprites', {
+            layout: 'matrix',
+            margin: '10'
+        })
+    });
