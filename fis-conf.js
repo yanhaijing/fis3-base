@@ -74,6 +74,7 @@ fis.match('::package', {
     // 分析 __RESOURCE_MAP__ 结构，来解决资源加载问题
     postpackager: fis.plugin('loader', {
         resourceType: 'commonJs',
+        allInOne: true,
         useInlineMap: true // 资源映射表内嵌
     })
 });
@@ -105,4 +106,13 @@ fis.media('prod')
             layout: 'matrix',
             margin: '10'
         })
+    })
+    .match('/modules/css/common.scss', {
+        packTo: '/pkg/common.css'
+    })
+    .match('/components/**.js', {
+        packTo: '/pkg/common.js'
+    })
+    .match('/modules/{lib,util,ui}/**.{js,es}', {
+        packTo: '/pkg/common.js'
     });
