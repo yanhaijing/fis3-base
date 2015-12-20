@@ -2,13 +2,12 @@
 fis.set('project', {
     name: 'fis3-base',
     static: '/static',
-    files: ['*.html', 'map.json', '/test/*'] //设置编译范围为 html 文件，不过 html 文件中使用到的资源也会参与编译。
+    //设置编译范围为 html 文件，不过 html 文件中使用到的资源也会参与编译。
+    files: ['*.html', 'map.json', '/modules/**', '/test/**'] 
 });
 
 // 引入模块化开发插件，设置规范为 commonJs 规范。
-fis.hook('module', {
-    mode: 'commonJs'
-});
+fis.hook('commonjs');
 
 /*************************目录规范*****************************/
 // 配置css
