@@ -1,6 +1,5 @@
 // 设置项目属性
 fis.set('project.name', 'fis3-base');
-fis.set('project.url', 'http://yanhaijing.com/');
 fis.set('project.static', '/static');
 fis.set('project.files', ['*.html', 'map.json', '/test/*']);
 
@@ -10,10 +9,6 @@ fis.hook('commonjs', {
     baseUrl: './modules',
     extList: ['.js', '.es']
 });
-
-fis.set('domain', '${project.url}${project.name}'); // 线上
-// fis.set('domain', ''); // 本地
-
 
 /*************************目录规范*****************************/
 // 配置css
@@ -78,55 +73,67 @@ fis.match('::package', {
     })
 });
 
+// 公用js
+var map = {
+    'prd-debug': {
+        host: '',
+        path: ''
+    },
+    'prd': {
+        host: 'http://yanhaijing.com',
+        path: '/${project.name}'
+    }
+};
 
-// fis3 release prod 产品发布，进行合并
-fis.media('prod')
+fis.util.map(map, function (k, v) {
+    var domain = v.host + v.path;
+
+    fis.media(k)
+        .match('**.{js,es}', {
+            useHash: true,
+            domain: domain
+        })
+        .match('**.{css,scss}', {
+            useSprite: true,
+            useHash: true,
+            domain: domain
+        })
+        .match('::image', {
+            useHash: true,
+            domain: domain
+        })
+        .match('**/(*_{x,y,z}.png)', {
+            release: '/pkg/$1'
+        })
+        // 启用打包插件，必须匹配 ::package
+        .match('::package', {
+            spriter: fis.plugin('csssprites', {
+                layout: 'matrix',
+                // scale: 0.5,
+                margin: '10'
+            }),
+            postpackager: fis.plugin('loader', {
+                allInOne: true,
+            })
+        })
+        .match('/modules/css/common.scss', {
+            packTo: '/pkg/common.css'
+        })
+        .match('/components/**.js', {
+            packTo: '/pkg/common.js'
+        })
+        .match('/modules/{lib,util,ui}/**.{js,es}', {
+            packTo: '/pkg/common.js'
+        });
+});
+
+// 发布产品库
+fis.media('prd')
     .match('**.{js,es}', {
-        optimizer: fis.plugin('uglify-js'),
-        useHash: true,
-        domain: '${domain}'
+        optimizer: fis.plugin('uglify-js')
     })
     .match('**.{css,scss}', {
         optimizer: fis.plugin('clean-css', {
             'keepBreaks': true //保持一个规则一个换行
-        }),
-        useSprite: true,
-        useHash: true,
-        domain: '${domain}'
-    })
-    .match('::image', {
-        useHash: true,
-        domain: '${domain}'
-    })
-    .match('**/(*_{x,y,z}.png)', {
-        release: 'pkg/$1'
-    })
-    // 启用打包插件，必须匹配 ::package
-    .match('::package', {
-        spriter: fis.plugin('csssprites', {
-            layout: 'matrix',
-            // scale: 0.5,
-            margin: '10'
-        }),
-        postpackager: fis.plugin('loader', {
-            allInOne: true,
         })
-    })
-    .match('/modules/css/common.scss', {
-        packTo: '/pkg/common.css'
-    })
-    .match('/components/**.js', {
-        packTo: '/pkg/common.js'
-    })
-    .match('/modules/{lib,util,ui}/**.{js,es}', {
-        packTo: '/pkg/common.js'
-    })
-    // .match('**', {
-    //   deploy: [
-    //     fis.plugin('skip-packed'),
-
-    //     fis.plugin('local-deliver', {
-    //       to: 'output'
-    //     })
-    //   ]
-    // });
+    });
