@@ -98,6 +98,9 @@ fis.media('prod')
         useHash: true,
         domain: '${domain}'
     })
+    .match('**/(*_{x,y,z}.png)', {
+        release: 'pkg/$1'
+    })
     // 启用打包插件，必须匹配 ::package
     .match('::package', {
         spriter: fis.plugin('csssprites', {
@@ -117,4 +120,13 @@ fis.media('prod')
     })
     .match('/modules/{lib,util,ui}/**.{js,es}', {
         packTo: '/pkg/common.js'
-    });
+    })
+    // .match('**', {
+    //   deploy: [
+    //     fis.plugin('skip-packed'),
+
+    //     fis.plugin('local-deliver', {
+    //       to: 'output'
+    //     })
+    //   ]
+    // });
