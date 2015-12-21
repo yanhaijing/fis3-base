@@ -1,17 +1,19 @@
 // 设置项目属性
-fis.set('project', {
-    name: 'fis3-base',
-    url: 'http://yanhaijing.com/',
-    static: '/static',
-    //设置编译范围为 html 文件，不过 html 文件中使用到的资源也会参与编译。
-    files: ['**.html', 'map.json', '/modules/**', '/test/**'] 
+fis.set('project.name', 'fis3-base');
+fis.set('project.url', 'http://yanhaijing.com/');
+fis.set('project.static', '/static');
+fis.set('project.files', ['*.html', 'map.json', '/test/*']);
+
+// 引入模块化开发插件，设置规范为 commonJs 规范。
+
+fis.hook('commonjs', {
+    baseUrl: './modules',
+    extList: ['.js', '.es']
 });
 
 // fis.set('domain', '${project.url}${project.name}'); // 线上
 fis.set('domain', ''); // 本地
 
-// 引入模块化开发插件，设置规范为 commonJs 规范。
-fis.hook('commonjs');
 
 /*************************目录规范*****************************/
 // 配置css
@@ -41,12 +43,10 @@ fis.match(/^\/modules\/(.*)\.es$/i, {
     parser: fis.plugin('babel-5.x'),
     rExt: 'js',
     isMod: true,
-    id: '$1',
     release: '${project.static}/$1.js'
 });
 fis.match(/^\/modules\/(.*)\.js$/i, {
     isMod: true,
-    id: '$1',
     release: '${project.static}/$1.js'
 });
 
