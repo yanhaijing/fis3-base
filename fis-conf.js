@@ -11,8 +11,8 @@ fis.hook('commonjs', {
     extList: ['.js', '.es']
 });
 
-// fis.set('domain', '${project.url}${project.name}'); // 线上
-fis.set('domain', ''); // 本地
+fis.set('domain', '${project.url}${project.name}'); // 线上
+// fis.set('domain', ''); // 本地
 
 
 /*************************目录规范*****************************/
@@ -94,7 +94,7 @@ fis.media('prod')
         useHash: true,
         domain: '${domain}'
     })
-    .match('image', {
+    .match('::image', {
         useHash: true,
         domain: '${domain}'
     })
@@ -102,6 +102,7 @@ fis.media('prod')
     .match('::package', {
         spriter: fis.plugin('csssprites', {
             layout: 'matrix',
+            // scale: 0.5,
             margin: '10'
         }),
         postpackager: fis.plugin('loader', {
