@@ -4,8 +4,9 @@
     "author": "fis-components"
   },
   "dependencies": [
-    "jquery@^1.9.1",
-    "jquery-ui@^1.11.2",
-    "underscore@^1.7.0"
+    "jquery@~1.9.1",
+    "jquery-ui@~1.11.2",
+    "underscore@~1.7.0",
+    "es6-promise@~2.0.1"
   ]
 }
