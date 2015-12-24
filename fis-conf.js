@@ -45,8 +45,13 @@ fis.match(/^\/modules\/(.*)\.js$/i, {
     release: '${project.static}/$1.js'
 });
 
-// 配置前端模版
+// 配置前端模版 使用template.js
 fis.match('**.tmpl', {
+    parser: fis.plugin('template', {
+        sTag: '<#',
+        eTag: '#>',
+        global: 'template'
+    }),
     isJsLike: true,
     release : false
 });
