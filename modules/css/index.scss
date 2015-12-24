@@ -1,10 +1,12 @@
 @import "mixin/clearfix";
+@import "compass-mixins/compass"
 
 .index {
     @include clearfix();
     width: 220px;
     height: 220px;
     background: url(img/index.jpg?__sprite);
+    color: shade(#444, 10);
 }
 .index2 {
     width: 150px;

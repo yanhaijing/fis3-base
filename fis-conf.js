@@ -13,7 +13,9 @@ fis.hook('commonjs', {
 /*************************目录规范*****************************/
 // 配置css
 fis.match(/^\/modules\/(.*\.scss)$/i, {
-    parser: fis.plugin('sass'),
+    parser: fis.plugin('sass', {
+        include_paths: ['/components'] // 加入文件查找目录
+    }),
     rExt: '.css',
     isMod: true,
     release: '${project.static}/$1'
