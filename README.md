@@ -13,3 +13,6 @@
 
 ## 说明文档
 [INTRO](INTRO.md)
+
+## 协议
+[MIT-LICENSE](MIT-LICENSE)
