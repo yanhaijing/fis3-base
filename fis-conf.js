@@ -11,6 +11,12 @@ fis.hook('commonjs', {
 });
 
 /*************************目录规范*****************************/
+
+// 开启同名依赖
+fis.match('/modules/**', {
+    useSameNameRequire: true
+});
+
 // 配置css
 fis.match(/^\/modules\/(.*\.scss)$/i, {
     parser: fis.plugin('sass', {
