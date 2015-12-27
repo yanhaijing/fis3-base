@@ -122,12 +122,18 @@ fis.util.map(map, function (k, v) {
         .match('::package', {
             spriter: fis.plugin('csssprites', {
                 layout: 'matrix',
-                // scale: 0.5,
+                // scale: 0.5, // 移动端二倍图用
                 margin: '10'
             }),
             postpackager: fis.plugin('loader', {
                 allInOne: true,
             })
+        })
+        .match('/modules/**.{scss,css}', {
+            packTo: '/pkg/modules.css'
+        })
+        .match('/modules/css/**.{scss,css}', {
+            packTo: ''
         })
         .match('/modules/css/common.scss', {
             packTo: '/pkg/common.css'
@@ -136,11 +142,11 @@ fis.util.map(map, function (k, v) {
             packTo: '/pkg/components.js'
         })
         .match('/modules/**.{es,js}', {
+            packTo: '/pkg/modules.js'
+        })
+        .match('/modules/app/**.{es,js}', {
             packTo: '/pkg/aio.js'
         })
-        .match('/modules/{lib,util,ui}/**.{es,js}', {
-            packTo: '/pkg/common.js'
-        });
 });
 
 // 发布产品库
