@@ -102,11 +102,11 @@ fis.util.map(map, function (k, v) {
     var domain = v.host + v.path;
 
     fis.media(k)
-        .match('**.{js,es}', {
+        .match('**.{es,js}', {
             useHash: true,
             domain: domain
         })
-        .match('**.{css,scss}', {
+        .match('**.{scss,css}', {
             useSprite: true,
             useHash: true,
             domain: domain
@@ -133,19 +133,22 @@ fis.util.map(map, function (k, v) {
             packTo: '/pkg/common.css'
         })
         .match('/components/**.js', {
-            packTo: '/pkg/common.js'
+            packTo: '/pkg/components.js'
         })
-        .match('/modules/{lib,util,ui}/**.{js,es}', {
+        .match('/modules/**.{es,js}', {
+            packTo: '/pkg/aio.js'
+        })
+        .match('/modules/{lib,util,ui}/**.{es,js}', {
             packTo: '/pkg/common.js'
         });
 });
 
 // 发布产品库
 fis.media('prd')
-    .match('**.{js,es}', {
+    .match('**.{es,js}', {
         optimizer: fis.plugin('uglify-js')
     })
-    .match('**.{css,scss}', {
+    .match('**.{scss,css}', {
         optimizer: fis.plugin('clean-css', {
             'keepBreaks': true //保持一个规则一个换行
         })
