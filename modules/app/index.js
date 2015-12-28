@@ -1,5 +1,5 @@
 var $ = require('jquery');
-
+require('jquery-ui/button.js');
 // 测试UIbase
 var UIBase = require('ui/base/base');
 console.log(UIBase);

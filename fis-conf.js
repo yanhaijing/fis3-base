@@ -17,6 +17,32 @@ fis.match('/modules/**', {
     useSameNameRequire: true
 });
 
+
+// ------ 配置lib
+fis.match('/lib/**.js', {
+    release: '${project.static}/$&'
+});
+
+
+// ------ 配置components
+fis.match('/components/**', {
+    release: '${project.static}/$&'
+});
+fis.match('/components/**.css', {
+    isMod: true,
+    release: '${project.static}/$&'
+});
+fis.match('/components/**.js', {
+    isMod: true,
+    release: '${project.static}/$&'
+});
+
+
+// ------ 配置modules
+fis.match('/modules/(**)', {
+    release: '${project.static}/$1'
+})
+
 // 配置css
 fis.match(/^\/modules\/(.*\.scss)$/i, {
     parser: fis.plugin('sass', {
@@ -35,25 +61,19 @@ fis.match(/^\/modules\/(.*\.(?:png|jpg|gif))$/i, {
 });
 
 // 配置js
-fis.match('/lib/**.js', {
-    release: '${project.static}/$&'
-});
-fis.match('/components/**.js', {
-    isMod: true,
-    release: '${project.static}/$&'
-});
-fis.match(/^\/modules\/(.*)\.es$/i, {
+fis.match(/^\/modules\/(.*\.es)$/i, {
     parser: fis.plugin('babel-5.x'),
     rExt: 'js',
     isMod: true,
-    release: '${project.static}/$1.js'
+    release: '${project.static}/$1'
 });
-fis.match(/^\/modules\/(.*)\.js$/i, {
+fis.match(/^\/modules\/(.*\.js)$/i, {
     isMod: true,
-    release: '${project.static}/$1.js'
+    release: '${project.static}/$1'
 });
 
-// 配置前端模版 使用template.js
+
+// ------ 配置前端模版 使用template.js
 fis.match('**.tmpl', {
     parser: fis.plugin('template', {
         sTag: '<#',
@@ -64,7 +84,8 @@ fis.match('**.tmpl', {
     release : false
 });
 
-// 配置模拟数据
+
+// ------ 配置模拟数据
 fis.match('/test/**', {
   release: '$0'
 });
@@ -148,6 +169,7 @@ fis.util.map(map, function (k, v) {
             packTo: '/pkg/aio.js'
         })
 });
+
 
 // 发布产品库
 fis.media('prd')
