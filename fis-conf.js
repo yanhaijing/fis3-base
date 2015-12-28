@@ -150,6 +150,15 @@ fis.util.map(map, function (k, v) {
                 allInOne: true,
             })
         })
+        .match('/lib/es5-{shim,sham}.js', {
+            packTo: '/pkg/es5-shim.js'
+        })
+        .match('/components/**.css', {
+            packTo: '/pkg/components.css'
+        })
+        .match('/components/**.js', {
+            packTo: '/pkg/components.js'
+        })
         .match('/modules/**.{scss,css}', {
             packTo: '/pkg/modules.css'
         })
@@ -158,9 +167,6 @@ fis.util.map(map, function (k, v) {
         })
         .match('/modules/css/common.scss', {
             packTo: '/pkg/common.css'
-        })
-        .match('/components/**.js', {
-            packTo: '/pkg/components.js'
         })
         .match('/modules/**.{es,js}', {
             packTo: '/pkg/modules.js'

@@ -1,5 +1,4 @@
 var $ = require('jquery');
-require('jquery-ui/button.js');
 // 测试UIbase
 var UIBase = require('ui/base/base');
 console.log(UIBase);
@@ -12,10 +11,6 @@ console.log(Promise);
 require('util/template/template');
 var tpl = __inline('test.tmpl');
 $('body').append(tpl({}));
-
-// 测试 zepto
-var zepto = require('zepto');
-console.log(zepto);
 
 // 测试 underscore
 var _ = require('underscore');
