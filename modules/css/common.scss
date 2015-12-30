@@ -1,4 +1,8 @@
+@import "compass-mixins/compass";
+@import "mixin";
+
 @import "normalize.css/normalize.css";
+
 body {
     background: red;
     color: red;

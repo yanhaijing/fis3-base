@@ -1,5 +1,5 @@
-@import "mixin/clearfix";
-@import "compass-mixins/compass"
+@import "compass-mixins/compass";
+@import "mixin";
 
 .index {
     @include clearfix();
