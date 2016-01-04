@@ -8,6 +8,7 @@
 - SASS&Compass
 - fis components
 - template.js
+- data.js
 - html，js，css组件
 - 本地模拟数据
 - 开发，测试发布，发布多种模式

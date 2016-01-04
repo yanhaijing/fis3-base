@@ -15,3 +15,8 @@ $('body').append(tpl({}));
 // 测试 underscore
 var _ = require('underscore');
 console.log(_)
+
+// 测试data.js
+
+var Data = require('lib/data.js/data.js');
+console.log(Data);
