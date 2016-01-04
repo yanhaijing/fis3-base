@@ -7,8 +7,8 @@
 - ECMASCript2015
 - SASS&Compass
 - fis components
-- template.js
-- data.js
+- [template.js](https://github.com/yanhaijing/template.js)
+- [data.js](https://github.com/yanhaijing/data.js)
 - html，js，css组件
 - 本地模拟数据
 - 开发，测试发布，发布多种模式
