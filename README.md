@@ -1,4 +1,4 @@
-# fis3 base
+# [fis3 base](https://github.com/yanhaijing/fis3-base)
 基于fis3的纯前端解决方案demo。
 
 ## 特色
