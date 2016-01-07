@@ -1,4 +1,4 @@
-# [fis3 base](https://github.com/yanhaijing/fis3-base)
+# [fis3 base](https://github.com/yanhaijing/fis3-base) [![](https://img.shields.io/badge/Powered by-fis3 base-brightgreen.svg)](https://github.com/yanhaijing/fis3-base)
 基于fis3的纯前端解决方案demo。
 
 ## 特色
