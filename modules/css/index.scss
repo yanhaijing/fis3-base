@@ -1,15 +1,2 @@
 @import "compass-mixins/compass";
 @import "mixin";
-
-.index {
-    @include clearfix();
-    width: 220px;
-    height: 220px;
-    background: url(img/index.jpg?__sprite);
-    color: shade(#444, 10);
-}
-.index2 {
-    width: 150px;
-    height: 150px;
-    background: url(img/index2.jpg?__sprite);
-}
