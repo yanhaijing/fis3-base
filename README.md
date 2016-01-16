@@ -1,8 +1,8 @@
 # [fis3 base](https://github.com/yanhaijing/fis3-base) [![](https://img.shields.io/badge/Powered by-fis3 base-brightgreen.svg)](https://github.com/yanhaijing/fis3-base)
-基于fis3的纯前端解决方案demo。
+基于fis3的纯前端解决方案，拿来即用的fis3脚手架。
 
 ## 特色
-此demo有如下功能特色。
+fis3 base有如下功能特色。
 - commonjs
 - ECMASCript2015
 - SASS&Compass
