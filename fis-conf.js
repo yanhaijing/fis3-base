@@ -46,7 +46,7 @@ fis.match('/modules/(**)', {
 // 配置css
 fis.match(/^\/modules\/(.*\.scss)$/i, {
     parser: fis.plugin('sass', {
-        include_paths: ['/modules/css', '/components'] // 加入文件查找目录
+        include_paths: ['modules/css', 'components'] // 加入文件查找目录
     }),
     rExt: '.css',
     isMod: true,
