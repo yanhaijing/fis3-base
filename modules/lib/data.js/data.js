@@ -1,5 +1,5 @@
 /*!
- * data.js v0.2.1 (https://github.com/yanhaijing/data.js)
+ * data.js v0.3.0 (https://github.com/yanhaijing/data.js)
  * Copyright 2013 yanhaijing. All Rights Reserved
  * Licensed under MIT (https://github.com/yanhaijing/data.js/blob/master/MIT-LICENSE.txt)
  */
@@ -33,15 +33,41 @@
     var toString = obj.toString;
     var hasOwn = obj.hasOwnProperty;
     var euid = 0;
-    function isFun(fn) {
-        return toString.call(fn) === "[object Function]";
+    function getType(x) {
+        if(x === null){
+            return 'null';
+        }
+
+        var t= typeof x;
+
+        if(t !== 'object'){
+            return t;
+        }
+        var c;
+        // 某些类型会报错
+        try {
+            c = toString.call(x).slice(8, -1).toLowerCase();
+        } catch(exp) {
+            return 'unknow';
+        }
+        if(c !== 'object'){
+            return c;
+        }
+
+        if(x.constructor===Object){
+            return c;
+        }
+
+        return 'unknow';
+    }
+    function isFn(fn) {
+        return getType(fn) === 'function';
     }
     function isArr(arr) {
-        return isFun(Array.isArray) ? 
-            Array.isArray(arr) : toString.call(arr) === '[object Array]';
+        return Array.isArray ? Array.isArray(arr) : getType(arr) === 'array';
     }
     function isObj(obj) {
-        return toString.call(obj) === "[object Object]";
+        return getType(obj) === 'object';
     }
     function extendDeep() {
         var target = arguments[0] || {};
@@ -58,6 +84,11 @@
                 
                 //避免无限循环
                 if (target === copy) {
+                    continue;
+                }
+
+                // 非可枚举属性
+                if (!hasOwn.call(arr, name)) {
                     continue;
                 }
                 
@@ -80,28 +111,46 @@
         return target;
     }
     
+    function pub(events, event, key, data) {
+        events = events[event][key];
+        
+        if (isObj(events)) {
+            for (var name in events) {
+                if (events.hasOwnProperty(name)) {
+                    events[name]({
+                        type: event,
+                        key: key,
+                        data: data
+                    });
+                }
+            }
+        }
+    }
     function extendData(key, events, context, src) {
         var nkey;
         for (var name in src) {
             var ctx = context[name];
             var copy = src[name];
             var copyIsArr;
+            var isadd = false;
+            var isdelete = false;
             //避免无限循环
             if (context === copy) {
                 continue;
             }
             
-            nkey = (typeof key === 'undefined' ? '' : (key + '.')) + name;
-            
-            pub(events, 'set', nkey, copy);
-            
-            if (typeof copy === 'undefined') {
-                pub(events, 'delete', nkey, copy);
-            } else if (typeof context[name] === 'undefined') {
-                pub(events, 'add', nkey, copy);
-            } else {
-                pub(events, 'update', nkey, copy);
+            // 非可枚举属性
+            if (!hasOwn.call(src, name)) {
+                continue;
             }
+                
+            if (typeof copy === 'undefined') {
+                isdelete = true;
+            } else if (typeof context[name] === 'undefined') {
+                isadd = true;
+            }
+
+            nkey = (typeof key === 'undefined' ? '' : (key + '.')) + name;
             
             if (copy && (isObj(copy) || (copyIsArr = isArr(copy)))) {                
                 if (copyIsArr) {
@@ -114,6 +163,16 @@
                 context[name] = extendData(nkey, events, context[name], copy);
             } else {                
                 context[name] = copy;
+            }
+            
+            pub(events, 'set', nkey, context[name]);
+            
+            if (isdelete) {
+                pub(events, 'delete', nkey, context[name]);
+            } else if (isadd) {
+                pub(events, 'add', nkey, context[name]);
+            } else {
+                pub(events, 'update', nkey, context[name]);
             }
         }
         
@@ -134,21 +193,6 @@
         }
         
         return src;
-    }
-    function pub(events, event, key, data) {
-        events = events[event][key];
-        
-        if (isObj(events)) {
-            for (var name in events) {
-                if (events.hasOwnProperty(name)) {
-                    events[name]({
-                        type: event,
-                        key: key,
-                        data: data
-                    });
-                }
-            }
-        }
     }
     
     //Data构造函数
@@ -245,11 +289,17 @@
             return typeof  this.get(key) === 'undefined' ? false : true;
         },
         sub: function (type, key, callback) {
-            if (typeof type !== 'string' || typeof key !== 'string' || !isFun(callback)) {
+            //参数不合法
+            if (typeof type !== 'string' || typeof key !== 'string' || !isFn(callback)) {
                 return -1;
             }
+
+            //不支持的事件
+            if (!(type in this._events)) {
+                return -2;
+            }
             
-            var events = this._events[type] || {};
+            var events = this._events[type];
             
             events[key] = events[key] || {};
             
@@ -257,12 +307,18 @@
             
             return euid - 1;
         },
-        unsub: function (type, key, id ) {            
+        unsub: function (type, key, id ) {   
+            //参数不合法         
             if (typeof type !== 'string' || typeof key !== 'string') {
                 return false;
             }
+
+            //不支持的事件
+            if (!(type in this._events)) {
+                return false;
+            }
             
-            var events = this._events[type] || {};
+            var events = this._events[type];
             
             if (!isObj(events[key])) {
                 return false;
@@ -276,6 +332,9 @@
             delete events[key][id];
             
             return true;
+        },
+        _clear: function () {
+            return this._init();
         }
     });
     
@@ -284,7 +343,7 @@
     
     //扩展Data接口
     extendDeep(Data, {
-        version: '0.2.1',
+        version: '0.3.0',
         has: function (key) {
             return data.has(key);
         },
@@ -299,6 +358,9 @@
         },
         unsub: function (type, key, id) {
             return data.unsub(type, key, id);
+        },
+        _clear: function () {
+            return data._clear();
         }
     });
     
