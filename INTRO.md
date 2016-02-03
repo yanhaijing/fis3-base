@@ -45,6 +45,7 @@ fis依赖node，了解node请看这里[nodejs.org](http://nodejs.org/)。
 
 - components fis 组件的目录
 - img html中用到的图片
+- lib 存放一些不打包的js库
 - modules 项目的组件
 	- app 项目用到的js
 	- css 项目用到的css
