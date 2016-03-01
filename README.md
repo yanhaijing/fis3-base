@@ -15,6 +15,3 @@ fis3 base有如下功能特色。
 
 ## 说明文档
 [INTRO](INTRO.md)
-
-## 协议
-[MIT-LICENSE](MIT-LICENSE)
