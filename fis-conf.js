@@ -45,16 +45,22 @@ fis.match('/modules/(**)', {
 
 // 配置css
 fis.match(/^\/modules\/(.*\.scss)$/i, {
+    rExt: '.css',
+    isMod: true,
+    release: '${project.static}/$1',
     parser: fis.plugin('sass', {
         include_paths: ['modules/css', 'components'] // 加入文件查找目录
     }),
-    rExt: '.css',
-    isMod: true,
-    release: '${project.static}/$1'
+    postprocessor: fis.plugin('autoprefixer', {
+        browsers: ["Android >= 2.3", "ChromeAndroid > 1%", "iOS >= 4"] // wap
+    })
 });
 fis.match(/^\/modules\/(.*\.css)$/i, {
     isMod: true,
-    release: '${project.static}/$1'
+    release: '${project.static}/$1',
+    postprocessor: fis.plugin('autoprefixer', {
+        browsers: ["Android >= 2.3", "ChromeAndroid > 1%", "iOS >= 4"] // wap
+    })
 })
 fis.match(/^\/modules\/(.*\.(?:png|jpg|gif))$/i, {
     release: '${project.static}/$1'

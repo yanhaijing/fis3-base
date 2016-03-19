@@ -1,2 +1,21 @@
 @import "compass-mixins/compass";
 @import "mixin";
+
+// 测试 autoprefixer
+@keyframes anim {
+    0% {
+        transform: translate(0px, 0px);
+    }
+    100% {
+        transform: translate(10px, 10px);
+    }
+} 
+.autoprefixer {
+    border-radius: 10px;
+    display: flex;
+    box-shadow: 1px 1px 1px #aaa;
+    transform: translate(10px, 10px);
+    transition: all 1s;
+    animation: anim 1s;
+    width: calc(100% - 50px);
+}
