@@ -11,11 +11,14 @@
     }
 } 
 .autoprefixer {
-    border-radius: 10px;
     display: flex;
+    border-radius: 10px;
+    width: calc(100% - 50px);
     box-shadow: 1px 1px 1px #aaa;
+    text-shadow:1px 1px #aaa;
+    opacity: 1;
+    columns:200px 3;
     transform: translate(10px, 10px);
     transition: all 1s;
     animation: anim 1s;
-    width: calc(100% - 50px);
 }
