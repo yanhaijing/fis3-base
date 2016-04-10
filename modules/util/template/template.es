@@ -13,4 +13,4 @@ template.config({
 
 window.template = template; // 暴漏到windows，供预编译使用
 
-export default template;
+export {template};

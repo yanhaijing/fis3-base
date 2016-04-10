@@ -8,7 +8,7 @@ var Promise = require('es6-promise').Promise;
 console.log(Promise);
 
 // 测试template
-require('util/template/template');
+require('util/template/template').template;
 var tpl = __inline('test.tmpl');
 $('body').append(tpl({}));
 
