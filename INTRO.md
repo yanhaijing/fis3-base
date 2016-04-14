@@ -4,15 +4,30 @@
 ## 依赖
 fis依赖node，了解node请看这里[nodejs.org](http://nodejs.org/)。
 
-用下面的命令安装fis3
+第一步，用下面的命令安装fis3
 
 	npm install -g fis3
 
-接下来需要安装fis组件
+第二步，安装fis插件
 
-	fis3 install
+    npm install -g fis3-hook-commonjs
+
+    npm install -g fis-parser-sass
+    npm install -g fis-parser-template
+    npm install -g fis-parser-babel-5.x
+
+    npm install -g fis-postprocessor-autoprefixer
+
+    npm install -g fis3-postpackager-loader
+
+更多插件可以看[这里](http://fis.baidu.com/fis3/docs/api/dev-plugin.html)。
+
+第三步，接下来需要安装fis组件
+
+    fis3 install
 
 更多信息请看[fis用户文档](http://fis.baidu.com/fis3/docs/beginning/install.html)。
+
 
 ## 如何运行
 开启fis服务器
