@@ -1,0 +1,31 @@
+{
+  "name": "fis3-base",
+  "version": "0.1.0",
+  "description": "基于fis3的纯前端解决方案，拿来即用的fis3脚手架。",
+  "main": "fis-conf.js",
+  "directories": {
+    "test": "test"
+  },
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/yanhaijing/fis3-base.git"
+  },
+  "author": {
+    "name": "yanhaijing",
+    "email": "yanhaijing@yeah.net",
+    "url": "http://yanhaijing.com"
+  },
+  "license": [
+    {
+      "type": "MIT",
+      "url": "https://github.com/yanhaijing/fis3-base/blob/master/MIT-LICENSE.txt"
+    }
+  ],
+  "bugs": {
+    "url": "https://github.com/yanhaijing/fis3-base/issues"
+  },
+  "homepage": "https://github.com/yanhaijing/fis3-base"
+}
