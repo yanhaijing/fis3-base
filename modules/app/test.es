@@ -20,3 +20,12 @@ console.log(_)
 
 var Data = require('lib/data.js/data.js');
 console.log(Data);
+
+import {guid, uuid} from 'util/guid/guid';
+
+
+var count = 10;
+while(count--) {
+    console.log(guid());
+    console.log(uuid());
+}
