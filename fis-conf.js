@@ -52,8 +52,8 @@ fis.match(/^\/modules\/(.*\.scss)$/i, {
         include_paths: ['modules/css', 'components'] // 加入文件查找目录
     }),
     postprocessor: fis.plugin('autoprefixer', {
-        browsers: ['> 1% in CN', "last 2 versions", "IE >= 8"] // pc
-        // browsers: ["Android >= 4", "ChromeAndroid > 1%", "iOS >= 6"] // wap
+        browsers: ['> 1% in CN', 'last 2 versions', 'IE >= 8'] // pc
+        // browsers: ['Android >= 4', 'iOS >= 6', 'and_uc > 9'] // wap
     })
 });
 fis.match(/^\/modules\/(.*\.css)$/i, {
