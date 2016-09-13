@@ -60,8 +60,8 @@ fis.match(/^\/modules\/(.*\.css)$/i, {
     isMod: true,
     release: '${project.static}/$1',
     postprocessor: fis.plugin('autoprefixer', {
-        browsers: ['> 1% in CN', "last 2 versions", "IE >= 8"] // pc
-        // browsers: ["Android >= 4", "ChromeAndroid > 1%", "iOS >= 6"] // wap
+        browsers: ['IE >= 8', 'Chrome >= 30', 'last 2 versions'] // pc
+        // browsers: ['Android >= 4', 'ChromeAndroid > 1%', 'iOS >= 6'] // wap
     })
 })
 fis.match(/^\/modules\/(.*\.(?:png|jpg|gif))$/i, {
