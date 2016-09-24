@@ -12,7 +12,7 @@ fis3 base有如下功能特色。
 - [template.js](https://github.com/yanhaijing/template.js)
 - html，js，css组件
 - 本地模拟数据
-- 开发，测试发布，发布多种模式
+- 开发，测试，发布等多种模式
 
 ## 说明文档
 [INTRO](INTRO.md)

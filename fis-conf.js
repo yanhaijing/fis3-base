@@ -115,22 +115,32 @@ fis.match('::package', {
     })
 });
 
-// 公用js
+// debug后缀 不会压缩
 var map = {
-    'prd-debug': {
+    'rd': {
         host: '',
         path: ''
     },
-    'prd': {
+    'rd-debug': {
+        host: '',
+        path: ''
+    },
+    'prod': {
         host: 'http://yanhaijing.com',
         path: '/${project.name}'
+    },
+    'prod-debug': {
+        host: '',
+        path: ''
     }
 };
 
-fis.util.map(map, function (k, v) {
-    var domain = v.host + v.path;
+// 通用 1.替换url前缀 2.添加mr5码 3.打包 4.合图 5.重新定义资源路径
+Object.keys(map).forEach(function (v) {
+    var o = map[v];
+    var domain = o.host + o.path;
 
-    fis.media(k)
+    fis.media(v)
         .match('**.{es,js}', {
             useHash: true,
             domain: domain
@@ -185,13 +195,29 @@ fis.util.map(map, function (k, v) {
 });
 
 
-// 发布产品库
-fis.media('prd')
-    .match('**.{es,js}', {
-        optimizer: fis.plugin('uglify-js')
-    })
-    .match('**.{scss,css}', {
-        optimizer: fis.plugin('clean-css', {
-            'keepBreaks': true //保持一个规则一个换行
+// 压缩css js
+Object.keys(map)
+.filter(function (v) {return v.indexOf('debug') < 0})
+.forEach(function (v) {
+    fis.media(v)
+        .match('**.{es,js}', {
+            optimizer: fis.plugin('uglify-js')
         })
-    });
+        .match('**.{scss,css}', {
+            optimizer: fis.plugin('clean-css', {
+                'keepBreaks': true //保持一个规则一个换行
+            })
+        });
+});
+
+
+// 发布到指定的机器
+['rd', 'rd-debug'].forEach(function (v) {
+    fis.media(v)
+        .match('*', {
+            deploy: fis.plugin('http-push', {
+                receiver: 'xxx/fisreceiver.php',
+                to: 'xxx/' + fis.get('project.name')
+            })
+        });
+});

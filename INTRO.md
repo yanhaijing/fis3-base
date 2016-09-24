@@ -39,8 +39,12 @@ fis依赖node，了解node请看这里[nodejs.org](http://nodejs.org/)。
 发布
 
 	fis3 release
-	fis3 release prd-debug # 本地查看发布产品库状态
-	fis3 release prd # 发布产品库
+
+	fis3 release prod-debug # 本地查看发布产品库状态
+    fis3 release prod # 发布产品库
+
+    fis3 release rd # 发布到指定机器
+	fis3 release rd-debug # 发布到指定机器调试
 
 更多命令请[查看这里](http://fis.baidu.com/fis3/docs/api/command.html)。
 
