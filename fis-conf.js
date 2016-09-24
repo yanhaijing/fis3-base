@@ -18,6 +18,25 @@ fis.match('/modules/**', {
 });
 
 
+// ------ 全局配置
+// 允许你在 js 中直接 require css+文件
+fis.match('*.{js,es}', {
+    preprocessor: [
+        fis.plugin('js-require-file'),
+        fis.plugin('js-require-css', {
+            mode: 'dependency'
+        })
+    ]
+});
+
+// 配置图片压缩
+fis.match('**.png', {
+    optimizer: fis.plugin('png-compressor',{
+        type: 'pngquant'
+    })
+});
+
+
 // ------ 配置lib
 fis.match('/lib/**.js', {
     release: '${project.static}/$&'
@@ -195,11 +214,14 @@ Object.keys(map).forEach(function (v) {
 });
 
 
-// 压缩css js
+// 压缩css js html
 Object.keys(map)
 .filter(function (v) {return v.indexOf('debug') < 0})
 .forEach(function (v) {
     fis.media(v)
+        .match('**.html', {
+            optimizer: fis.plugin('html-compress')
+        })
         .match('**.{es,js}', {
             optimizer: fis.plugin('uglify-js')
         })
