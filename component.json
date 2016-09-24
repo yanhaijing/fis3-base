@@ -10,6 +10,7 @@
     "jquery-placeholder@~2.0.8",
     "underscore@~1.8.3",
     "es6-promise@~2.0.1",
+    "fetch@~0.7.0",
     "bootstrap@~3.3.5",
     "compass-mixins@~0.12.7",
     "zepto@~1.1.6",
