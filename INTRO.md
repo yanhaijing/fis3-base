@@ -4,6 +4,8 @@
 ## 依赖
 fis依赖node，了解node请看这里[nodejs.org](http://nodejs.org/)。
 
+**注意：推荐node版本 0.12.x。**
+
 第一步，用下面的命令安装fis3
 
 	npm install -g fis3
