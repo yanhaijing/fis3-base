@@ -211,6 +211,10 @@ Object.keys(map).forEach(function (v) {
         .match('/modules/app/**.{es,js}', {
             packTo: '/pkg/aio.js'
         })
+        // 为了上线方便，将静态文件发布到同一个目录
+        // .match('**/(*.{css,js,jpg,png,gif})', {
+        //     release: '/prod/$1'
+        // })
 });
 
 
@@ -232,14 +236,37 @@ Object.keys(map)
         });
 });
 
+// 本地产出发布
+fis.media('prod')
+    .match('**', {
+        deploy: [
+            fis.plugin('skip-packed', {
+                // 默认被打包了 js 和 css 以及被 css sprite 合并了的图片都会在这过滤掉，
+                // 但是如果这些文件满足下面的规则，则依然不过滤
+                ignore: []
+            }),
+
+            fis.plugin('local-deliver', {
+                to: 'output'
+            })
+        ]
+    });
+
 
 // 发布到指定的机器
 ['rd', 'rd-debug'].forEach(function (v) {
     fis.media(v)
         .match('*', {
-            deploy: fis.plugin('http-push', {
-                receiver: 'xxx/fisreceiver.php',
-                to: 'xxx/' + fis.get('project.name')
-            })
+            deploy: [
+                fis.plugin('skip-packed', {
+                    // 默认被打包了 js 和 css 以及被 css sprite 合并了的图片都会在这过滤掉，
+                    // 但是如果这些文件满足下面的规则，则依然不过滤
+                    ignore: []
+                }),
+                fis.plugin('http-push', {
+                    receiver: 'xxx/fisreceiver.php',
+                    to: 'xxx/' + fis.get('project.name')
+                })
+            ]
         });
 });
