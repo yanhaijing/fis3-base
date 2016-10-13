@@ -11,18 +11,34 @@ fis依赖node，了解node请看这里[nodejs.org](http://nodejs.org/)。
 	npm install -g fis3
 
 第二步，安装fis插件
-
+    
+    # hook类
     npm install -g fis3-hook-commonjs
-
+    
+    # parser类
     npm install -g fis-parser-sass # windows平台，请使用node <= 0.12
     npm install -g fis-parser-template
     npm install -g fis-parser-babel-5.x
+    
+    # preprocessor类
+    npm install -g fis-preprocessor-js-require-file
+    npm install -g fis-preprocessor-js-require-css
 
+    # postprocessor类
     npm install -g fis-postprocessor-autoprefixer
-
+    
+    # postpackager类
     npm install -g fis3-postpackager-loader
+    
+    # optimizer类
+    npm install -g fis3-optimizer-html-compress
 
-更多插件可以看[这里](http://fis.baidu.com/fis3/docs/api/dev-plugin.html)。
+    # deploy类
+    npm install -g fis3-deploy-skip-packed
+
+更多插件可以看[fis3插件开发](http://fis.baidu.com/fis3/docs/api/dev-plugin.html)和[fis3常用插件列表
+
+](http://fis.baidu.com/fis3/docs/common-plugin.html)。
 
 第三步，接下来需要安装fis组件
 
