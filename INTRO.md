@@ -4,7 +4,7 @@
 ## 依赖
 fis依赖node，了解node请看这里[nodejs.org](http://nodejs.org/)。
 
-**注意：推荐node版本 0.12.x。**
+**注意：windows平台，推荐node版本 0.12.x。**
 
 第一步，用下面的命令安装fis3（安装失败，可以试试[淘宝镜像](http://yanhaijing.com/tool/2015/09/01/my-npm-note/)）
 
