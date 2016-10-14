@@ -96,7 +96,7 @@ fis依赖node，了解node请看这里[nodejs.org](http://nodejs.org/)。
 fis提供了大量组件，社区比较活跃的库一般都有组件存在，你可以在下面的链接查找对应组件。
 https://github.com/fis-components
 
-**注：**为了稳定，建议把components也加入版本控制库。
+**注意：为了稳定性，建议把components也加入版本控制库。**
 
 ## 问题反馈
 使用过程中的常见问题请见这里 [issue](https://github.com/yanhaijing/fis3-base/issues)。
