@@ -31,7 +31,7 @@ fis.match('*.{js,es}', {
 
 // 配置图片压缩
 fis.match('**.png', {
-    optimizer: fis.plugin('png-compressor',{
+    optimizer: fis.plugin('png-compressor', {
         type: 'pngquant'
     })
 });
@@ -79,7 +79,7 @@ fis.match(/^\/modules\/(.*\.(scss|less|css))$/i, {
     release: '${project.static}/$1',
     postprocessor: fis.plugin('autoprefixer', {
         browsers: ['IE >= 8', 'Chrome >= 30', 'last 2 versions'] // pc
-        // browsers: ['Android >= 4', 'ChromeAndroid > 1%', 'iOS >= 6'] // wap
+            // browsers: ['Android >= 4', 'ChromeAndroid > 1%', 'iOS >= 6'] // wap
     })
 });
 fis.match(/^\/modules\/(.*\.(?:png|jpg|gif))$/i, {
@@ -107,16 +107,16 @@ fis.match('**.tmpl', {
         global: 'template'
     }),
     isJsLike: true,
-    release : false
+    release: false
 });
 
 
 // ------ 配置模拟数据
 fis.match('/test/**', {
-  release: '$0'
+    release: '$0'
 });
 fis.match('/test/server.conf', {
-  release: '/config/server.conf'
+    release: '/config/server.conf'
 });
 
 
@@ -154,7 +154,7 @@ var map = {
 };
 
 // 通用 1.替换url前缀 2.添加mr5码 3.打包 4.合图 5.重新定义资源路径
-Object.keys(map).forEach(function (v) {
+Object.keys(map).forEach(function(v) {
     var o = map[v];
     var domain = o.host + o.path;
 
@@ -219,21 +219,23 @@ Object.keys(map).forEach(function (v) {
 
 // 压缩css js html
 Object.keys(map)
-.filter(function (v) {return v.indexOf('debug') < 0})
-.forEach(function (v) {
-    fis.media(v)
-        .match('**.html', {
-            optimizer: fis.plugin('html-compress')
-        })
-        .match('**.{es,js}', {
-            optimizer: fis.plugin('uglify-js')
-        })
-        .match('**.{scss,less,css}', {
-            optimizer: fis.plugin('clean-css', {
-                'keepBreaks': true //保持一个规则一个换行
+    .filter(function(v) {
+        return v.indexOf('debug') < 0
+    })
+    .forEach(function(v) {
+        fis.media(v)
+            .match('**.html', {
+                optimizer: fis.plugin('html-compress')
             })
-        });
-});
+            .match('**.{es,js}', {
+                optimizer: fis.plugin('uglify-js')
+            })
+            .match('**.{scss,less,css}', {
+                optimizer: fis.plugin('clean-css', {
+                    'keepBreaks': true //保持一个规则一个换行
+                })
+            });
+    });
 
 // 本地产出发布
 fis.media('prod')
@@ -253,7 +255,7 @@ fis.media('prod')
 
 
 // 发布到指定的机器
-['rd', 'rd-debug'].forEach(function (v) {
+['rd', 'rd-debug'].forEach(function(v) {
     fis.media(v)
         .match('*', {
             deploy: [
