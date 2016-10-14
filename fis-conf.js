@@ -64,25 +64,24 @@ fis.match('/modules/(**)', {
 
 // 配置css
 fis.match(/^\/modules\/(.*\.scss)$/i, {
-    rExt: '.css',
-    isMod: true,
-    release: '${project.static}/$1',
     parser: fis.plugin('sass', {
         include_paths: ['modules/css', 'components'] // 加入文件查找目录
-    }),
-    postprocessor: fis.plugin('autoprefixer', {
-        browsers: ['IE >= 8', 'Chrome >= 30', 'last 2 versions'] // pc
-        // browsers: ['Android >= 4', 'iOS >= 6', 'and_uc > 9'] // wap
     })
 });
-fis.match(/^\/modules\/(.*\.css)$/i, {
+fis.match(/^\/modules\/(.*\.less)$/i, {
+    parser: fis.plugin('less', {
+        paths: []
+    })
+});
+fis.match(/^\/modules\/(.*\.(scss|less|css))$/i, {
+    rExt: '.css',
     isMod: true,
     release: '${project.static}/$1',
     postprocessor: fis.plugin('autoprefixer', {
         browsers: ['IE >= 8', 'Chrome >= 30', 'last 2 versions'] // pc
         // browsers: ['Android >= 4', 'ChromeAndroid > 1%', 'iOS >= 6'] // wap
     })
-})
+});
 fis.match(/^\/modules\/(.*\.(?:png|jpg|gif))$/i, {
     release: '${project.static}/$1'
 });
@@ -164,7 +163,7 @@ Object.keys(map).forEach(function (v) {
             useHash: true,
             domain: domain
         })
-        .match('**.{scss,css}', {
+        .match('**.{scss,less,css}', {
             useSprite: true,
             useHash: true,
             domain: domain
@@ -196,10 +195,10 @@ Object.keys(map).forEach(function (v) {
         .match('/components/**.js', {
             packTo: '/pkg/components.js'
         })
-        .match('/modules/**.{scss,css}', {
+        .match('/modules/**.{scss,less,css}', {
             packTo: '/pkg/modules.css'
         })
-        .match('/modules/css/**.{scss,css}', {
+        .match('/modules/css/**.{scss,less,css}', {
             packTo: ''
         })
         .match('/modules/css/common.scss', {
@@ -229,7 +228,7 @@ Object.keys(map)
         .match('**.{es,js}', {
             optimizer: fis.plugin('uglify-js')
         })
-        .match('**.{scss,css}', {
+        .match('**.{scss,less,css}', {
             optimizer: fis.plugin('clean-css', {
                 'keepBreaks': true //保持一个规则一个换行
             })

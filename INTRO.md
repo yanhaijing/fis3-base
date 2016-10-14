@@ -6,7 +6,7 @@ fis依赖node，了解node请看这里[nodejs.org](http://nodejs.org/)。
 
 **注意：推荐node版本 0.12.x。**
 
-第一步，用下面的命令安装fis3
+第一步，用下面的命令安装fis3（安装失败，可以试试[淘宝镜像](http://yanhaijing.com/tool/2015/09/01/my-npm-note/)）
 
 	npm install -g fis3
 
@@ -17,6 +17,7 @@ fis依赖node，了解node请看这里[nodejs.org](http://nodejs.org/)。
     
     # parser类
     npm install -g fis-parser-sass # windows平台，请使用node <= 0.12
+    npm install -g fis-parser-less
     npm install -g fis-parser-template
     npm install -g fis-parser-babel-5.x
     
