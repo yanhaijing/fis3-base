@@ -211,7 +211,7 @@ Object.keys(map).forEach(function(v) {
             packTo: '/pkg/aio.js'
         })
         // 为了上线方便，将静态文件发布到同一个目录
-        // .match('**/(*.{css,js,jpg,png,gif})', {
+        // .match('**/(*.{css,less,scss,es,js,jpg,png,gif})', {
         //     release: '/prod/$1'
         // })
 });
