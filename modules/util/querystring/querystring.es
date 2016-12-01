@@ -13,14 +13,14 @@ function parse(queryString = '') {
         throw new TypeError('parse: first param must is string', 'querystring.es');
     }
 
-    const decode = decodeURIComponent
+    const decode = decodeURIComponent;
 
     return queryString.split('&').reduce((search, kvStr) => {
-        const [key, value] = kvStr.split('=')
+        const [key, value] = kvStr.split('=');
 
-        search[decode(key)] = decode(value)
-        return search
-    }, {})
+        search[decode(key)] = decode(value);
+        return search;
+    }, {});
 }
 
 // 序列化一个对象到query
