@@ -8,19 +8,19 @@ import $ from 'jquery';
 import {isString, isObject} from 'util/type';
 
 // 将query转换为对象
-function parse(str = '') {
-    if (!isString(str)) {
+function parse(queryString = '') {
+    if (!isString(queryString)) {
         throw new TypeError('parse: first param must is string', 'querystring.es');
     }
 
-    let res = {};
+    const decode = decodeURIComponent
 
-    str.split('&').forEach(function (term) {
-        let terms = term.split['='];
-        res[terms[0]] = terms[1];
-    });
+    return queryString.split('&').reduce((search, kvStr) => {
+        const [key, value] = kvStr.split('=')
 
-    return res;
+        search[decode(key)] = decode(value)
+        return search
+    }, {})
 }
 
 // 序列化一个对象到query
