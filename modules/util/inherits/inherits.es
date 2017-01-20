@@ -1,11 +1,19 @@
 /**
  * @file inherits from ES6 class in ES5 environment
- * @author CeHOU
+ * @author yanhaijing
  */
 
 export function inherits(childClass, superClass) {
-    childClass.prototype = Object.create(superClass.prototype);
-    // 这里注意兼容性，IE11以上才完全支持
+    // need es5 env
+    childClass.prototype = Object.create(superClass.prototype, {
+        constructor: {
+            value: subClass,
+            enumerable: false,
+            writable: true,
+            configurable: true
+        }
+    });
+
     if (Object.setPrototypeOf) {
         Object.setPrototypeOf(childClass, superClass)
     }
