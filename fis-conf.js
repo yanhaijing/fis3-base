@@ -198,9 +198,6 @@ Object.keys(map).forEach(function(v) {
         .match('/modules/**.{scss,less,css}', {
             packTo: '/pkg/modules.css'
         })
-        .match('/modules/css/**.{scss,less,css}', {
-            packTo: ''
-        })
         .match('/modules/css/common.scss', {
             packTo: '/pkg/common.css'
         })
