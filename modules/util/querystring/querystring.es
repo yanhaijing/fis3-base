@@ -1,5 +1,5 @@
 /**
- * @file url query 相关函数
+ * @file url query 相关函数，借鉴nodejs api
  * @author yanhaijing.com
  * @date 2016年11月16日19:28:49
  */

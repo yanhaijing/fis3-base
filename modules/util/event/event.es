@@ -1,5 +1,5 @@
 /**
- * @file 事件发射器类
+ * @file 事件发射器类，借鉴nodejs api
  * @author yanhaijing.com
  * @date 2015年12月16日 20:17:32
  */

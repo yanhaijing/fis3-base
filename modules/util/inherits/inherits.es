@@ -1,22 +1,25 @@
 /**
- * @file inherits from ES6 class in ES5
+ * @file ES5下继承ES6中的class，参考nodejs api
  * @author yanhaijing
  */
 
-export function inherits(childClass, superClass) {
-    // need es5 环境
-    childClass.prototype = Object.create(superClass.prototype, {
+function inherits(Child, Parent) {
+    // 需要es5环境
+    Child.prototype = Object.create(Parent.prototype, {
         constructor: {
-            value: subClass,
+            value: Child,
             enumerable: false,
             writable: true,
             configurable: true
         }
     });
 
+    // 静态属性继承，兼容ie慎用
     if (Object.setPrototypeOf) {
-        Object.setPrototypeOf(childClass, superClass)
+        Object.setPrototypeOf(Child, Parent);
     } else {
-        childClass.__proto__ = superClass;
+        Child.__proto__ = Parent;
     }
 }
+
+export {inherits};

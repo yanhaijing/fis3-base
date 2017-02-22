@@ -1,5 +1,5 @@
 /**
- * @file 通过ajax操作，返回promise实例
+ * @file 通过ajax操作，返回promise实例，参考fetch
  * @author yanhaijing.com
  * @date 2016年1月25日 16:16:28
  */
