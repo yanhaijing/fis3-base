@@ -1,7 +1,7 @@
 /**
- * @file url query 相关函数，借鉴nodejs api
+ * querystring 相关函数，借鉴nodejs api
  * @author yanhaijing.com
- * @date 2016年11月16日19:28:49
+ * @date 2016年11月5日
  */
 
 import $ from 'jquery';

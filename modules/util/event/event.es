@@ -1,7 +1,7 @@
 /**
- * @file 事件发射器类，借鉴nodejs api
+ * 事件发射器类，借鉴nodejs api
  * @author yanhaijing.com
- * @date 2015年12月16日 20:17:32
+ * @date 2015年12月1日
  */
 import $ from 'jquery';
 
@@ -33,6 +33,6 @@ class EventEmitter {
     }
 }
 
-var event = new EventEmitter();
+let event = new EventEmitter();
 
 export {EventEmitter, event};

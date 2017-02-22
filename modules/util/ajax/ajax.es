@@ -1,17 +1,23 @@
 /**
- * @file 通过ajax操作，返回promise实例，参考fetch
+ * 通过ajax操作，返回promise实例，参考fetch
  * @author yanhaijing.com
- * @date 2016年1月25日 16:16:28
+ * @date 2016年1月2日
  */
 
 import $ from 'jquery';
 import {Promise} from 'es6-promise';
 
-var jqAjax = $.ajax;
+let jqAjax = $.ajax;
+ 
+$.ajax = function (...rest) {
+    console && console.warn && console.warn('please use ajax in ajax.es');
+    jqAjax(...rest);
+};
 
 function ajax(opt) {
-    // 智能猜测 dataType xml html script json jsonp text
-    return Promise.resolve($.ajax(opt));
+    // 智能猜测 dataType
+    // 支持 xml html script json jsonp text
+    return Promise.resolve(jqAjax(opt));
 }
 
 export {ajax};

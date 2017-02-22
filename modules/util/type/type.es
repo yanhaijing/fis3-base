@@ -1,22 +1,22 @@
 /**
- * @file 获取变量的类型
+ * 获取变量的类型
  * @author yanhaijing.com
- * @date 2016年1月3日 21:37:13
+ * @date 2015年1月1日
  */
 
-var toString = ''.toString;
+let toString = ''.toString;
 
 function type(x) {
     if(x === null){
         return 'null';
     }
 
-    var t= typeof x;
+    let t= typeof x;
 
     if(t !== 'object'){
         return t;
     }
-    var c;
+    let c;
     try {
         c = toString.call(x).slice(8, -1).toLowerCase();
     } catch(exp) {
