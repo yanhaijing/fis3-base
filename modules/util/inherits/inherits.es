@@ -1,10 +1,10 @@
 /**
- * @file inherits from ES6 class in ES5 environment
+ * @file inherits from ES6 class in ES5
  * @author yanhaijing
  */
 
 export function inherits(childClass, superClass) {
-    // need es5 env
+    // need es5 环境
     childClass.prototype = Object.create(superClass.prototype, {
         constructor: {
             value: subClass,
@@ -16,8 +16,7 @@ export function inherits(childClass, superClass) {
 
     if (Object.setPrototypeOf) {
         Object.setPrototypeOf(childClass, superClass)
-    }
-    else {
+    } else {
         childClass.__proto__ = superClass;
     }
 }
