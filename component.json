@@ -15,6 +15,8 @@
     "compass-mixins@~0.12.7",
     "zepto@~1.1.6",
     "animate.css@~3.1.0",
-    "normalize.css@~3.0.3"
+    "normalize.css@~3.0.3",
+    "react@~15.1.0",
+    "react-dom@~15.1.0"
   ]
 }
