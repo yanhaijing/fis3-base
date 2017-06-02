@@ -22,8 +22,8 @@ fis依赖node，了解node请看这里[nodejs.org](http://nodejs.org/)。
     npm install -g fis-parser-babel-5.x
     
     # preprocessor类
-    npm install -g fis-preprocessor-js-require-file
-    npm install -g fis-preprocessor-js-require-css
+    npm install -g fis3-preprocessor-js-require-file
+    npm install -g fis3-preprocessor-js-require-css
 
     # postprocessor类
     npm install -g fis-postprocessor-autoprefixer
