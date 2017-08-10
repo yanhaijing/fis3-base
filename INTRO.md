@@ -16,7 +16,10 @@ fis依赖node，了解node请看这里[nodejs.org](http://nodejs.org/)。
     npm install -g fis3-hook-commonjs
     
     # parser类
-    npm install -g fis-parser-sass # windows平台，请使用node <= 0.12
+    ## 下面两个sass插件二选一，还需要更改fisconf里对应的插件
+    npm install -g fis-parser-sass # node版本需 <= 0.12
+    npm install -g fis-parser-node-sass # node >= 4
+
     npm install -g fis-parser-less
     npm install -g fis-parser-template
     npm install -g fis-parser-babel-5.x
@@ -32,7 +35,7 @@ fis依赖node，了解node请看这里[nodejs.org](http://nodejs.org/)。
     npm install -g fis3-postpackager-loader
     
     # optimizer类
-    npm install -g fis3-optimizer-html-compress
+    # npm install -g fis3-optimizer-html-compress # 此插件已废弃，可跳过
 
     # deploy类
     npm install -g fis3-deploy-skip-packed

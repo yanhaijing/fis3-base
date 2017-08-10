@@ -64,7 +64,7 @@ fis.match('/modules/(**)', {
 
 // 配置css
 fis.match(/^\/modules\/(.*\.scss)$/i, {
-    parser: fis.plugin('sass', {
+    parser: fis.plugin('node-sass', {
         include_paths: ['modules/css', 'components'] // 加入文件查找目录
     })
 });
@@ -224,9 +224,9 @@ Object.keys(map)
     })
     .forEach(function(v) {
         fis.media(v)
-            .match('**.html', {
-                optimizer: fis.plugin('html-compress')
-            })
+            // .match('**.html', {
+            //     optimizer: fis.plugin('html-compress')
+            // })
             .match('**.{es,js}', {
                 optimizer: fis.plugin('uglify-js')
             })
