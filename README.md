@@ -1,5 +1,7 @@
-# [fis3 base](https://github.com/yanhaijing/fis3-base) [![](https://img.shields.io/badge/Powered%20by-fis3%20base-brightgreen.svg)](https://github.com/yanhaijing/fis3-base) [![license](http://img.shields.io/npm/l/express.svg)](https://github.com/yanhaijing/fis3-base/blob/master/MIT-LICENSE)
+# [fis3 base](https://github.com/yanhaijing/fis3-base) [![](https://img.shields.io/badge/Powered%20by-fis3%20base-brightgreen.svg)](https://github.com/yanhaijing/fis3-base) [![license](http://img.shields.io/npm/l/express.svg)](https://github.com/yanhaijing/fis3-base/blob/master/LICENSE)
 基于fis3的纯前端解决方案，拿来即用的fis3脚手架。
+
+[English README](https://github.com/yanhaijing/fis3-base/blob/master/README_NG.md) 
 
 ## 特色
 fis3 base有如下功能特色。
