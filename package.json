@@ -27,5 +27,8 @@
   "bugs": {
     "url": "https://github.com/yanhaijing/fis3-base/issues"
   },
-  "homepage": "https://github.com/yanhaijing/fis3-base"
+  "homepage": "https://github.com/yanhaijing/fis3-base",
+  "dependencies": {
+    "template_js": "0.7.1"
+  }
 }

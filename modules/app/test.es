@@ -30,3 +30,5 @@ while(count--) {
     console.log(uuid());
 }
 
+var template = require('template_js');
+
