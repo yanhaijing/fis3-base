@@ -44,12 +44,19 @@ fis依赖node，了解node请看这里[nodejs.org](http://nodejs.org/)。
 
 ](http://fis.baidu.com/fis3/docs/common-plugin.html)。
 
-第三步，接下来需要安装fis组件
+第三步，需要安装组件，此处需要区分使用npm，还是components
+
+如果你是用的是npm（也就是使用fis-conf-npm.js），接下来需要安装npm依赖
+
+    npm install
+    
+如果你使用fis-components（也就是使用fis-conf.js），接下来需要安装fis组件
 
     fis3 install
 
 更多信息请看[fis用户文档](http://fis.baidu.com/fis3/docs/beginning/install.html)。
 
+如果
 
 ## 如何运行
 开启fis服务器

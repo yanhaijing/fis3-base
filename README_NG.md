@@ -10,9 +10,10 @@ fis3 base has the following features:
 - [SASS](http://sass-lang.com/) & [Compass](http://compass-style.org/)
 - [less](http://www.lesscss.net/)
 - [autoprefixer](https://github.com/postcss/autoprefixer)
-- [fis components](https://github.com/fis-components)
+- [fis components](https://github.com/fis-components) or [npm](https://www.npmjs.com/package/fis3-hook-npm)
 - [data.js](https://github.com/yanhaijing/data.js)
 - [template.js](https://github.com/yanhaijing/template.js)
+- Integration of [jsmini](https://github.com/jsmini)
 - html，js，css components
 - Local analog data
 - Developing, testing, publishing, and other modes
