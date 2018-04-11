@@ -73,6 +73,10 @@ fis依赖node，了解node请看这里[nodejs.org](http://nodejs.org/)。
     fis3 release rd # 发布到指定机器
 	fis3 release rd-debug # 发布到指定机器调试
 
+如果是想使用npm可以再release后面指定fis-conf文件
+
+    fis3 release -f fis-conf-npm.js
+
 更多命令请[查看这里](http://fis.baidu.com/fis3/docs/api/command.html)。
 
 ## 目录说明
