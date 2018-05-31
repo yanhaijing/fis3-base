@@ -50,9 +50,7 @@ npm install -g fis3-deploy-skip-packed
 npm install -g fis3-hook-commonjs fis-parser-node-sass fis-parser-less fis-parser-template fis-parser-babel-5.x fis3-preprocessor-js-require-file fis3-preprocessor-js-require-css fis-postprocessor-autoprefixer fis3-postpackager-loader fis3-optimizer-html-compress fis3-deploy-skip-packed
 ```
 
-更多插件可以看[fis3插件开发](http://fis.baidu.com/fis3/docs/api/dev-plugin.html)和[fis3常用插件列表
-
-](http://fis.baidu.com/fis3/docs/common-plugin.html)。
+更多插件可以看[fis3插件开发](http://fis.baidu.com/fis3/docs/api/dev-plugin.html)和[fis3常用插件列表](http://fis.baidu.com/fis3/docs/common-plugin.html)。
 
 第三步，需要安装组件，此处需要区分使用npm，还是components
 
