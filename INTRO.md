@@ -1,6 +1,12 @@
 # 文档
 这里说明文档。依赖fis3，如果你不了解fis3，请移步[fis3官网](http://fis.baidu.com/)。
 
+## 推荐环境
+作者长期使用和测试的平台如下，对于没测试过的平台，可能会遇到一些问题，欢迎反馈哈
+
+- window7 node0.12.x
+- mac10.13 node8.9.x
+
 ## 依赖
 fis依赖node，了解node请看这里[nodejs.org](http://nodejs.org/)。
 
