@@ -35,7 +35,14 @@
     "@jsmini/inherits": "0.5.0",
     "@jsmini/is": "0.4.0",
     "@jsmini/type": "0.4.0",
+    "clone": "2.1.2",
     "data_js": "0.3.0",
-    "template_js": "0.6.1"
+    "extend": "3.0.2",
+    "load": "1.0.2",
+    "md5": "2.2.1",
+    "pubsub": "3.2.1",
+    "querystring": "0.2.0",
+    "template_js": "0.6.1",
+    "url": "0.11.0"
   }
 }
